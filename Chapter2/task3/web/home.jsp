@@ -25,12 +25,14 @@
                     if(news!=null){
                         for(News n : news){
                             %>
-            <div class="jumbotron">
-                <h1 class="display-4"><%=n.getTitle()%></h1>
-                <p class="lead"><%=n.getContent()%></p>
-                <p>Author: <strong><%=n.getAuthor()%></strong></p>
+            <div class="card">
+                <div class="container">
+                    <h1 class="display-4"><%=n.getTitle()%></h1>
+                    <p class="lead"><%=n.getContent()%></p>
+                    <p>Author: <strong><%=n.getAuthor()%></strong></p>
+                </div>
             </div>
-            <div class="card"></div>
+            <div class="row"><p></div>
                             <%
                         }
                     }
