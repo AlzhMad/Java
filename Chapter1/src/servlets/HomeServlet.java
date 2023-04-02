@@ -1,26 +1,27 @@
 package servlets;
 
+import db.DBManager;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import models.Employee;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 @WebServlet(value = "/home")
 public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         String name = request.getParameter("name");
-         String surname = request.getParameter("surname");
-         Integer age = Integer.parseInt(request.getParameter("age"));
-
-         String result = (name+" "+surname+" "+age);
-
-         response.setContentType("text/html");
+        ArrayList<Employee> employees = DBManager.getEmployees();
         PrintWriter out = response.getWriter();
-        out.print("<h1>"+result+"</h1>");
 
+        out.println("<table><thead><th>Name</th><th>Surname</th><th>Salary</th><th>Department</th><thead><tbody>");
+        for(Employee e : employees){
+             out.println("<tr><td>"+e.getName()+"</td><td>"+e.getSurname()+"</td><td>"+e.getSalary()+"</td><td>"+e.getDepartment()+"</td></tr>");
+        }
+        out.println("</tbody></table>");
 
     }
 

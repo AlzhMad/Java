@@ -14,4 +14,8 @@ public class DBManager {
     public static ArrayList<Employee> getEmployees(){
         return employees;
     }
+
+    public static void addEmployee(Employee employee){
+        employees.add(employee);
+    }
 }
